@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan Asset</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f4f9;
+            color: #333;
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            background: rgb(0, 115, 255);
+            color: white;
+            width: 250px;
+            height: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .sidebar h1 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin: 10px 0;
+            display: block;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .sidebar a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar h2 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+        .navbar .logout {
+            background: rgb(0, 115, 255);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .navbar .logout:hover {
+            background: white;
+            color: rgb(0, 115, 255);
+            border: 2px solid rgb(0, 115, 255);
+        }
+        .scan-container {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+        }
+        #video {
+            width: 100%;
+            max-width: 600px;
+            border: 2px solid rgb(0, 115, 255);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h1>Dashboard</h1>
+        <a href="Dashboard Overview.html">Overview</a>
+        <a href="Dashboard Ruangan.html">Daftar Ruangan</a>
+        <a href="Scan Asset.html">Scan Asset</a>
+        <a href="#logout">Logout</a>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content">
+        <!-- Navbar -->
+        <div class="navbar">
+            <h2>Scan Asset</h2>
+            <button class="logout">Logout</button>
+        </div>
+
+        <!-- Scan QR Code -->
+        <div class="scan-container">
+            <h3>Scan QR Code Asset</h3>
+            <video id="video" autoplay></video>
+            <p id="result" style="margin-top: 15px; font-weight: bold;"></p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.9/html5-qrcode.min.js"></script>
+    <script>
+        const video = document.getElementById('video');
+        const result = document.getElementById('result');
+
+        // Access camera for scanning QR code
+        navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+            .then(stream => {
+                video.srcObject = stream;
+                video.play();
+            })
+            .catch(err => {
+                result.textContent = 'Camera not accessible: ' + err.message;
+            });
+
+        const qrCodeScanner = new Html5QrcodeScanner("video", { fps: 10, qrbox: 250 });
+
+        qrCodeScanner.render(qrCodeMessage => {
+            result.textContent = `QR Code Content: ${qrCodeMessage}`;
+        }, errorMessage => {
+            console.log('QR Code scan error:', errorMessage);
+        });
+    </script>
+</body>
+</html>

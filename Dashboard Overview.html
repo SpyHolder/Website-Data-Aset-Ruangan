@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f4f9;
+            color: #333;
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            background: rgb(0, 115, 255);
+            color: white;
+            width: 250px;
+            height: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .sidebar h1 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin: 10px 0;
+            display: block;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .sidebar a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .profile-logo {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            margin-bottom: 2px;
+        }
+        .profile-logo img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar h2 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+        .navbar .logout {
+            background: rgb(0, 115, 255);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .navbar .logout:hover {
+            background: white;
+            color: rgb(0, 115, 255);
+            border: 2px solid rgb(0, 115, 255);
+        }
+        .overview-cards {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 200px;
+            max-width: 300px;
+            padding: 20px;
+            text-align: center;
+            color: rgb(0, 115, 255);
+        }
+        .card h3 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+        .card p {
+            margin: 10px 0 0;
+            font-size: 1.2em;
+        }
+        /* Popup Styles */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .popup-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .popup-content h3 {
+            margin: 0 0 15px;
+        }
+        .popup-content button {
+            margin: 5px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .popup-content .yes {
+            background: rgb(0, 115, 255);
+            color: white;
+        }
+        .popup-content .no {
+            background: #ddd;
+            color: #333;
+        }
+        .popup-content .yes:hover {
+            background: white;
+            color: rgb(0, 115, 255);
+            border: 2px solid rgb(0, 115, 255);
+        }
+        .popup-content .no:hover {
+            background: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="profile-logo">
+            <a href="Profile.html"><img src="profil.jpg" alt="Profile Logo"></a>
+        </div>
+        <h1>Dashboard</h1>
+        <a href="Dashboard Overview.html">Overview</a>
+        <a href="Dashboard Ruangan.html">Daftar Ruangan</a>
+        <a href="Scan Asset.html">Scan Asset</a>
+        <a href="#logout" id="sidebarLogout">Logout</a> <!-- Logout di sidebar -->
+    </div>
+
+    <!-- Content Area -->
+    <div class="content">
+        <!-- Navbar -->
+        <div class="navbar">
+            <h2>Overview Dashboard</h2>
+            <button class="logout" id="logoutButton">Logout</button>
+        </div>
+
+        <!-- Overview Cards -->
+        <h3>Summary</h3>
+        <div class="overview-cards">
+            <div class="card">
+                <h3>11</h3>
+                <p>Jumlah Ruangan</p>
+            </div>
+            <div class="card">
+                <h3>43</h3>
+                <p>Total Kursi</p>
+            </div>
+            <div class="card">
+                <h3>15</h3>
+                <p>Total Meja</p>
+            </div>
+            <div class="card">
+                <h3>8</h3>
+                <p>Total Infocus</p>
+            </div>
+            <div class="card">
+                <h3>7</h3>
+                <p>Total Papan Tulis</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup -->
+    <div class="popup" id="logoutPopup">
+        <div class="popup-content">
+            <h3>Apakah Anda yakin untuk logout?</h3>
+            <button class="yes" id="yesButton">Iya</button>
+            <button class="no" id="noButton">Tidak</button>
+        </div>
+    </div>
+
+    <script>
+        const logoutButton = document.getElementById("logoutButton");
+        const sidebarLogout = document.getElementById("sidebarLogout");
+        const popup = document.getElementById("logoutPopup");
+        const yesButton = document.getElementById("yesButton");
+        const noButton = document.getElementById("noButton");
+
+        // Function to show the popup
+        const showPopup = () => {
+            popup.style.display = "flex";
+        };
+
+        // Add event listeners to logout buttons
+        logoutButton.addEventListener("click", showPopup);
+        sidebarLogout.addEventListener("click", (event) => {
+            event.preventDefault(); // Prevent default link behavior
+            showPopup();
+        });
+
+        // Close popup when 'Tidak' is clicked
+        noButton.addEventListener("click", () => {
+            popup.style.display = "none";
+        });
+
+        // Redirect to login page when 'Iya' is clicked
+        yesButton.addEventListener("click", () => {
+            window.location.href = "Login Page.html";
+        });
+    </script>
+</body>
+</html>
