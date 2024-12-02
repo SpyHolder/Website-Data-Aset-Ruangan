@@ -1,0 +1,97 @@
+import React from 'react';
+import './RoomDashboard.css'; // Assuming you will create a separate CSS file for styles
+
+const RoomDashboard = () => {
+    return (
+        <div style={{ display: 'flex', height: '100vh', margin: 0, fontFamily: 'Arial, sans-serif', background: '#f4f4f9', color: '#333' }}>
+            {/* Sidebar */}
+            <div className="sidebar">
+                <h1>Dashboard</h1>
+                <a href="Dashboard Overview.html">Overview</a>
+                <a href="Dashboard Ruangan.html">Daftar Ruangan</a>
+                <a href="Scan Asset.html">Scan Asset</a>
+                <a href="#logout">Logout</a>
+            </div>
+
+            {/* Content Area */}
+            <div className="content">
+                {/* Navbar */}
+                <div className="navbar">
+                    <h2>Dashboard Pendataan Ruangan</h2>
+                    <button className="logout">Logout</button>
+                </div>
+
+                {/* Room Table */}
+                <h3>Daftar Ruangan</h3>
+                <table className="room-table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Ruangan</th>
+                            <th>Detail Aset</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Ruang 1</td>
+                            <td>5 Kursi, 3 Meja, 1 Proyektor</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Ruang 2</td>
+                            <td>4 Kursi, 2 Meja, 1 Whiteboard</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Ruang 3</td>
+                            <td>6 Kursi, 3 Meja, 1 AC</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Ruang 4</td>
+                            <td>10 Kursi, 5 Meja, 1 Proyektor</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Ruang 5</td>
+                            <td>8 Kursi, 4 Meja, 1 Laptop</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Ruang 6</td>
+                            <td>5 Kursi, 2 Meja, 1 Televisi</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Ruang 7</td>
+                            <td>12 Kursi, 6 Meja, 2 Whiteboard</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Ruang 8</td>
+                            <td>6 Kursi, 3 Meja, 1 Printer</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>Ruang 9</td>
+                            <td>4 Kursi, 2 Meja, 1 Proyektor</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Ruang 10</td>
+                            <td>7 Kursi, 3 Meja, 1 Komputer</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>Ruang 11</td>
+                            <td>8 Kursi, 4 Meja, 1 Speaker</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    );
+};
+
+export default RoomDashboard;

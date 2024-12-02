@@ -1,0 +1,78 @@
+import React, { useState } from 'react';
+import './ProfilePage.css'; // Assuming you will create a separate CSS file for styles
+
+const ProfilePage = () => {
+    const [name, setName] = useState("John Doe");
+    const [bio, setBio] = useState("Saya adalah seorang profesional di bidang IT.");
+    const [profilePhoto, setProfilePhoto] = useState("profil.jpg");
+
+    const handleSaveProfile = () => {
+        alert(`Profil telah disimpan!\nNama: ${name}\nInformasi: ${bio}`);
+        // Implement saving to server logic here if needed
+    };
+
+    const handleFileInputChange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                setProfilePhoto(e.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    return (
+        <div style={{ display: 'flex', height: '100vh', margin: 0, fontFamily: 'Arial, sans-serif', background: '#f4f4f9', color: '#333' }}>
+            {/* Sidebar */}
+            <div className="sidebar">
+                <div className="profile-logo">
+                    <a href="Profile.html"><img src={profilePhoto} alt="Profile Logo" /></a>
+                </div>
+                <h1>Dashboard</h1>
+                <a href="Dashboard Overview.html">Overview</a>
+                <a href="Dashboard Ruangan.html">Daftar Ruangan</a>
+                <a href="Scan Asset.html">Scan Asset</a>
+                <a href="#logout" id="sidebarLogout">Logout</a>
+            </div>
+
+            {/* Content Area */}
+            <div className="content">
+                {/* Navbar */}
+                <div className="navbar">
+                    <h2>Profile</h2>
+                </div>
+
+                {/* Profile Information */}
+                <div className="profile-info">
+                    <h3>Informasi Profil</h3>
+                    {/* Profile Photo */}
+                    <div className="profile-photo">
+                        <img id="profilePhoto" src={profilePhoto} alt="Profile Photo" />
+                        {/* Edit Icon */}
+                        <div className="edit-icon" onClick={() => document.getElementById("profileImageInput").click()}>✎</div>
+                        {/* Input File untuk mengambil foto */}
+                        <input type="file" id="profileImageInput" accept="image/*" style={{ display: 'none' }} onChange={handleFileInputChange} />
+                    </div>
+
+                    {/* Name Input */}
+                    <div className="form-group">
+                        <label htmlFor="nameInput">Nama Lengkap</label>
+                        <input type="text" id="nameInput" value={name} onChange={(e) => setName(e.target.value)} />
+                    </div>
+
+                    {/* Bio / Information Input */}
+                    <div className="form-group">
+                        <label htmlFor="bioInput">Informasi Pengguna</label>
+                        <textarea id="bioInput" rows="4" value={bio} onChange={(e) => setBio(e.target.value)}></textarea>
+                    </div>
+
+                    {/* Save Button */}
+                    <button id="saveProfile" onClick={handleSaveProfile}>Simpan Profil</button>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default ProfilePage;

@@ -1,0 +1,67 @@
+import React, { useState } from 'react';
+import './Dashboard.css'; // Assuming you will create a separate CSS file for styles
+
+const Dashboard = () => {
+    const [isPopupVisible, setPopupVisible] = useState(false);
+
+    const showPopup = () => {
+        setPopupVisible(true);
+    };
+
+    const hidePopup = () => {
+        setPopupVisible(false);
+    };
+
+    const handleLogout = () => {
+        // Redirect to login page (or handle logout logic)
+        window.location.href = "Login Page.html";
+    };
+
+    return (
+        <div style={{ display: 'flex', height: '100vh', margin: 0, fontFamily: 'Arial, sans-serif', background: '#f4f4f9', color: '#333' }}>
+            {/* Sidebar */}
+            <div className="sidebar">
+                <div className="profile-logo">
+                    <a href="Profile.html"><img src="profil.jpg" alt="Profile Logo" /></a>
+                </div>
+                <h1>Dashboard</h1>
+                <a href="Dashboard Overview.html">Overview</a>
+                <a href="Dashboard Ruangan.html">Daftar Ruangan</a>
+                <a href="Scan Asset.html">Scan Asset</a>
+                <a href="#logout" onClick={showPopup}>Logout</a>
+            </div>
+
+            {/* Content Area */}
+            <div className="content">
+                {/* Navbar */}
+                <div className="navbar">
+                    <h2>Overview Dashboard</h2>
+                    <button className="logout" onClick={showPopup}>Logout</button>
+                </div>
+
+                {/* Overview Cards */}
+                <h3>Summary</h3>
+                <div className="overview-cards">
+                    <div className="card"><h3>11</h3><p>Jumlah Ruangan</p></div>
+                    <div className="card"><h3>43</h3><p>Total Kursi</p></div>
+                    <div className="card"><h3>15</h3><p>Total Meja</p></div>
+                    <div className="card"><h3>8</h3><p>Total Infocus</p></div>
+                    <div className="card"><h3>7</h3><p>Total Papan Tulis</p></div>
+                </div>
+            </div>
+
+            {/* Popup */}
+            {isPopupVisible && (
+                <div className="popup">
+                    <div className="popup-content">
+                        <h3>Apakah Anda yakin untuk logout?</h3>
+                        <button className="yes" onClick={handleLogout}>Iya</button>
+                        <button className="no" onClick={hidePopup}>Tidak</button>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default Dashboard;

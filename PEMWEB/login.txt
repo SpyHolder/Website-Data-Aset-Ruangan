@@ -1,0 +1,32 @@
+import React from 'react';
+import './LoginPage.css'; // Assuming you will create a separate CSS file for styles
+
+const LoginPage = () => {
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        // Add your login logic here (e.g., API call)
+        window.location.href = "Dashboard Overview.html"; // Redirect to the dashboard
+    };
+
+    return (
+        <div className="login-container">
+            <div className="header">
+                <h1>Website Pendataan Aset Ruangan</h1>
+            </div>
+            <div className="form-container">
+                <form onSubmit={handleSubmit}>
+                    <input type="text" placeholder="Masukkan ID" name="userID" required />
+                    <button type="submit">Masuk</button>
+                </form>
+                <div className="register-link">
+                    Belum punya akun? <a href="Register Page.html">Daftar Disini</a>
+                </div>
+            </div>
+            {/* Clouds */}
+            <div className="cloud cloud1"></div>
+            <div className="cloud cloud2"></div>
+        </div>
+    );
+};
+
+export default LoginPage;

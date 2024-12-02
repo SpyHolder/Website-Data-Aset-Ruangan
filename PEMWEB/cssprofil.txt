@@ -1,0 +1,152 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f9;
+    color: #333;
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    background: rgb(0, 115, 255);
+    color: white;
+    width: 250px;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar h1 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin: 10px 0;
+    display: block;
+    border-radius : 5px;
+    transition: background 0.3s ease;
+}
+
+.sidebar a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.profile-logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 2px;
+}
+
+.profile-logo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.profile-info {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.profile-info h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-info .form-group {
+    margin-bottom: 15px;
+}
+
+.profile-info label {
+    display: block;
+    font-weight: bold;
+}
+
+.profile-info input, .profile-info textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.profile-info .profile-photo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.profile-info .profile-photo img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-top: 10px;
+    object-fit: cover;
+}
+
+.profile-info .edit-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+}
+
+.profile-info .profile-photo:hover .edit-icon {
+    display: block; /* Show the edit icon on hover */
+}
+
+.profile-info button {
+    background: rgb(0, 115, 255);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.profile-info button:hover {
+    background: #005bb5;
+}

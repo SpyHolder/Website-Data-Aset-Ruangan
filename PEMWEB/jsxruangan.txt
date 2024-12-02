@@ -1,0 +1,12 @@
+import React from 'react';
+import RoomDashboard from './RoomDashboard';
+
+const App = () => {
+    return (
+        <div>
+            <RoomDashboard />
+        </div>
+    );
+};
+
+export default App;

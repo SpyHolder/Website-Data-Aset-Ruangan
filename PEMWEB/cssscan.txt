@@ -1,0 +1,90 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f9;
+    color: #333;
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    background: rgb(0, 115, 255);
+    color: white;
+    width: 250px;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar h1 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin: 10px 0;
+    display: block;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.sidebar a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding : 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.navbar .logout {
+    background: rgb(0, 115, 255);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.navbar .logout:hover {
+    background: white;
+    color: rgb(0, 115, 255);
+    border: 2px solid rgb(0, 115, 255);
+}
+
+.scan-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+#video {
+    width: 100%;
+    max-width: 600px;
+    border: 2px solid rgb(0, 115, 255);
+    border-radius: 5px;
+}
